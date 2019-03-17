@@ -1,0 +1,278 @@
+>app-accessibility/espeak-0 portaudio
+>app-arch/tar-0 -minimal
+>app-arch/p7zip-0 -wxwidgets rar
+>app-crypt/gcr-0 gtk
+>app-crypt/pinentry-0 gnome-keyring gtk -qt5 -qt4
+>app-doc/abs-guide-0 -pdf
+>app-doc/doxygen-0 -qt5 doxysearch clang dot
+>app-doc/kicad-doc-0 linguas_en
+>app-editors/emacs-0 -gtk3 -X -xpm
+>app-editors/mousepad-0 gtk3
+>app-editors/vim-0 -X -minimal python lua cscope vim-pager -python_single_target_python3_5 -python_targets_python3_5
+>app-editors/vim-core-0 -minimal
+>app-emulation/libvirt-glib-0.2.0 python lvm virt-network pcap
+>app-emulation/qemu-0  qemu_softmmu_targets_i386 qemu_user_targets_i386 qemu_user_targets_x86_64 gtk spice ssh usbredir
+>app-emulation/spice-0 client
+>app-emulation/virt-manager-0 gtk
+>app-emulation/virtualbox-0 vnc
+>app-emulation/wine-0.0 staging gsm gstreamer -capi s3tc xcomposite run-exes -gecko
+>app-emulation/xen-tools-0 qemu hvm
+>app-i18n/fcitx-0 -abi_x86_32 nls gtk gtk3 opencc -table -enchant qt4 -introspection
+>app-laptop/laptop-mode-tools-0 apm scsi
+>app-misc/tracker-0 -cue ffmpeg -gstreamer
+>app-office/akonadi-server-0 -mysql sqlite -soprano -postgres
+>app-office/libreoffice-0 gtk3 gtk gnome -python_single_target_python2_7 -python_targets_python2_7
+>app-office/openoffice-bin-0 gnome
+>app-portage/eix-0 dep optimization strong-optimization sqlite
+>app-portage/layman-0 git sync-plugin-portage
+>app-text/atril-0 gtk3
+>app-text/evince-0 nsplugin gnome
+>app-text/hunspell-0 nls
+>app-text/poppler-0 -qt5 curl
+>app-text/recode-0 nls
+>app-text/stardict-0.0 espeak pronounce qqwry spell
+>app-text/tesseract-0 linguas_zh_TW
+>app-text/texlive-core-0 cjk xetex
+>app-text/texi2html-0 -unicode
+>app-text/zathura-0 postscript
+>app-vim/conque-0  -python_single_target_python2_7 -python_targets_python2_7
+>dev-db/mysql-0 extraengine
+>dev-db/sqlite-0 tcl tools
+>dev-dotnet/mono-addins-0 gtk
+>dev-embedded/sdcc-0 device-lib doc packihx sdbinutils sdcdb sdcpp ucsim stm8
+>dev-embedded/sgpp-lite-arm-linux-bin-0 doc
+>dev-embedded/sgpp-lite-arm-uclinux-bin-0 doc
+>dev-embedded/openocd-0 parport ftdi
+>dev-java/oracle-jdk-bin-0 javafx nsplugin jce
+>dev-java/oracle-jre-bin-0 javafx nsplugin jce
+>dev-java/swt-0 gnome webkit
+>dev-lang/ghc-0 gmp binary
+>dev-lang/mono-0 minimal
+>dev-lang/python-0 sqlite threads
+>dev-libs/boehm-gc-0 threads
+>dev-libs/boehm-gc-7.4.2 threads
+>dev-libs/boost-1.0 python nls
+>dev-libs/botan-1 threads
+>dev-libs/c-blosc-0 hdf5 -snappy -lz4
+>dev-libs/DirectFB-0 fbcon
+>dev-libs/elfutils-0.0 static-libs
+>dev-libs/glib-0 utils
+>dev-libs/gobject-introspection-0 -python_single_target_python3_5
+>dev-libs/libburn-0 track-src-odirect
+=dev-libs/libgcrypt-1.5.4-r1 static-libs
+>dev-libs/libgpg-error-0 static-libs
+>dev-libs/libmateweather-0 gtk3
+>dev-libs/libpcre-8.0 pcre16
+>dev-libs/libpeas-1.12.1-r1 gtk
+>dev-libs/libxml2-2.9.2 python
+>dev-libs/lzo-0 static-libs
+>dev-libs/nss-0 utils
+>dev-libs/openssl-0 -bindist sctp -sslv3 rfc3779
+>dev-libs/protobuf-0 python
+>dev-python/ipython-0.0 -wxwidgets matplotlib
+>dev-python/matplotlib-0 -pyside fltk gtk3 -qt5 -wxwidgets
+>dev-python/pandas-0 -R
+>dev-python/PyQt4-0 declarative designer sql multimedia websockets webkit
+>dev-python/PyQt5-0 declarative designer sql multimedia websockets webkit
+>dev-python/pyside-0 designer webkit xmlpatterns
+>dev-python/sympy-0 -png ipython gtk imaging theano
+>dev-qt/designer-0 kde webkit
+>dev-qt/qtdeclarative-0 webkit
+>dev-qt/qtmultimedia-5.4.1 widgets
+>dev-qt/qt-mobility-0 multimedia
+>dev-qt/qtnetwork-0 -bindist
+>dev-qt/qtsql-0 -mysql sqlite
+>dev-qt/qtscript-0 scripttools
+>dev-qt/qtwebkit-0 printsupport -gstreamer
+>dev-qt/qtwebengine-0 widgets -system-ffmpeg -system-icu
+>dev-scheme/guile-0 networking
+>dev-util/anjuta-0 -devhelp terminal vala
+>dev-util/geany-0 gtk3
+>dev-util/geany-plugins-0 ctags -debugger git gtk3 lua -multiterm -python soup
+>dev-util/cmake-0 internal-jsoncpp
+>dev-util/eclipse-sdk-0 gnome
+>dev-util/global-0 ctags doc vim
+>dev-util/strace-0 aio
+>dev-vcs/git-0 highlight -perl
+>gnome-base/dconf-0.0 -X
+>gnome-base/gvfs-1.22.3 udisks fuse gtk archive mtp libsecret nfs ios
+>gnome-extra/libgda-0 gtk json sourceview
+>gnome-extra/chrome-gnome-shell-0 -python_single_target_python2_7
+>gnustep-base/gnustep-gui-0 speech
+>lxde-base/lxdm-0 nls -gtk3 # +gtk3 will overwrite cursor themes
+>mail-client/mutt-0 imap smtp pop mbox ssl -gdbm -sasl sidebar smime
+>mail-filter/maildrop-0 authlib
+>mail-mta/msmtp-0 libsecret sasl
+>media-fonts/unifont-0 utils
+>media-gfx/blender-0 man llvm fftw player sndfile
+>media-gfx/eom-0 gtk3
+>media-gfx/exiv2-0 xmp
+>media-gfx/fontforge-0 X gtk -python_single_target_python2_7
+>media-gfx/gimp-0 lcms mmg pdf dbus
+>media-gfx/graphviz-0 gdk-pixbuf gtk -qt4
+>media-gfx/imagemagick-0 -X -corefonts -truetype
+>media-gfx/photoqt-0 exiv2 graphicsmagick
+>media-gfx/splashutils-0 fbcondecor
+>media-gfx/ufraw-0 gnome gimp gtk
+>media-gfx/zbar-0 gtk imagemagick
+#>media-libs/clutter-0 -X egl
+#>media-libs/clutter-gst-0 -X
+#>media-libs/clutter-gtk-0 -X
+>media-libs/coin-0 doc
+>media-libs/gd-0 fontconfig
+>media-libs/grilo-0.2.11 playlist
+>media-libs/harfbuzz-0 icu
+>media-libs/libcanberra-0.0 gtk gtk3
+>media-libs/libvpx-0 postproc svc
+>media-libs/mesa-0 xa vaapi egl -bindist gles2 #video_cards_i915 video_cards_i965
+>media-libs/mlt-0	xine quicktime melt kdenlive python gtk frei0r
+>media-libs/opencv-0 qt5 doc v4l -python_single_target_python2_7 -python_targets_python2_7
+>media-libs/phonon-0 designer gstreamer -vlc
+>media-libs/sdl-mixer-0 mod mikmod
+>media-plugins/alsa-plugins-0 pulseaudio
+>media-plugins/audacious-plugins-0 -mms alsa nls fluidsynth gtk3
+>media-plugins/gst-plugins-meta-0 -ffmpeg
+>media-plugins/osdlyrics-0 appindicator -mpd -xmms2
+>media-sound/audacious-0 gtk3 nls chardet -qt5
+#>media-sound/pulseaudio-0 gtk
+>media-sound/shntool-0.0 alac mac shorten sox
+>media-video/ffmpeg-0.0 amr amrenc cdio cpudetection threads theora
+>media-video/ffmpegthumbnailer-0 gtk
+>media-video/kino-0 quicktime
+>media-video/mplayer-0 -directfb
+>net-analyzer/wireshark-0 adns androiddump ciscodump geoip -qt5 gtk sshdump libssh
+>net-dialup/ppp-0 gtk
+>net-dns/dnsmasq-0	script idn dhcp-tools auth-dns conntrack
+>net-dns/dnsmasq-0	script idn dhcp-tools auth-dns conntrack
+>net-fs/nfs-utils-0 nfsv41
+>net-fs/samba-0 client
+>net-libs/gtk-vnc-0 python
+>net-libs/libproxy-0 -kde -webkit
+>net-libs/libmicrohttpd-0 epoll messages
+>net-misc/networkmanager-0 -dhclient
+>net-misc/networkmanager-l2tp-0 gnome
+>net-misc/networkmanager-openvpn-0 gtk
+>net-misc/openssh-0.0.1 -bindist -X sctp
+# move net-misc/openvpn net-vpn/openvpn
+>net-vpn/openvpn-0 iproute2 passwordsave socks down-root
+>net-misc/putty-0 gtk
+>net-misc/spice-gtk-0 python usbredir
+>net-misc/tigervnc-0 server
+>net-nds/openldap-0 -minimal
+>net-print/cups-filters-0 -pdf
+>net-wireless/bluez-0 test-programs -extra-tools obex
+>net-wireless/crda-0 -gcrypt
+>net-wireless/wpa_supplicant-0.0 ssl readline p2p ap wimax -wps -qt5
+>sci-electronics/kicad-0 i18n example
+>sci-electronics/pcb-0.0 -gtk m4lib-png motif toporouter xrender nelma tk
+>sci-geosciences/gpsd-0 python
+>sci-libs/cholmod-0 -minimal
+>sci-libs/fftw-0 threads
+>sci-libs/gotoblas2-0 dynamic
+>sci-libs/gsl-0 cblas-external
+>sci-libs/libsingular-0 flint boost
+>sci-libs/linbox-0 sage
+>sci-libs/scipy-0 sparse
+>sci-mathematics/eclib-0 flint boost
+>sci-mathematics/flint-0 ntl
+>sci-mathematics/glpk-0 gmp
+>sci-mathematics/gmp-ecm-0 -openmp
+>sci-mathematics/gsl-shell-0 fox
+>sci-mathematics/lcalc-1.23-r6 pari
+>sci-mathematics/maxima-0 ecls -X
+>sci-mathematics/pari-0.0 gmp data qt4 fltk doc -X
+>sci-mathematics/polybori-0 gd
+>sci-mathematics/sage-0.0 arb  modular_decomposition -pdf bin-html -html bliss linguas_en
+>sci-mathematics/sage-doc-bin-0 linguas_en
+>sci-mathematics/sage-notebook-0 -server java
+>sci-mathematics/singular-0 flint boost
+>sci-astronomy/stellarium-0 starts media
+>sci-visualization/gnuplot-0 -wxwidgets qt4
+>sys-apps/busybox-0 mdev
+>sys-apps/groff-0.0 -X
+>sys-apps/iproute2-0 -minimal
+>sys-apps/man-db-0 -manpager
+>sys-apps/man-pages-0 -l10n_zh-CN
+>sys-apps/pcsc-lite-0 libusb
+>sys-apps/qingy-0 -directfb -gpm X
+>sys-apps/superiotool-0 pci
+>sys-apps/dstat-0 wifi
+>sys-auth/consolekit-0 policykit pm-utils
+>sys-block/gparted-0 dmraid btrfs jfs ntfs resierfs xfs
+>sys-boot/plymouth-0 gtk
+>sys-devel/autogen-0 libopts # recommand
+>sys-devel/gcc-arm-embedded-bin-0 doc
+>sys-devel/gcc-0 objc gcj
+>sys-devel/gdb-0 -python_targets_python2_7 -python_single_target_python2_7
+>sys-devel/gettext-0 git
+>sys-devel/llvm-0 clang python
+>sys-fs/ext4magic-0 file-attr expert-mode
+>sys-fs/lvm2-2.0  -thin -udev
+>sys-fs/ntfs3g-0 suid ntfsdecrypt -external-fuse
+>sys-libs/glibc-0 debug gd profile
+>sys-libs/tdb-0 python
+>sys-libs/ntdb-0 python
+>sys-libs/tevent-0 python
+>sys-libs/ncurses-0.0 -gpm -tinfo
+>sys-libs/zlib-0 minizip
+>sys-power/cpupower-0 cpufreq_bench
+>sys-process/lsof-0 rpc
+>sys-process/psmisc-0 -X
+>sys-process/procps-0 modern-top
+>www-client/firefox-0 -bindist
+>www-client/firefox-bin-0 -bindist pulseaudio
+>www-client/netsurf-0 -fbcon gtk
+>www-client/links-0 -livecd -X -directfb -fbcon
+>www-client/w3m-0 gtk -gpm imlib
+>x11-base/xorg-server-0.0 xvfb -minimal kdrive
+>x11-drivers/xf86-video-intel-0 uxa
+>x11-drivers/nvidia-drivers-0 compat uvm
+>x11-libs/cairo-0 xlib-xcb
+>x11-libs/gtksourceview-0 vala
+>x11-libs/libdrm-1 libkms
+>x11-libs/libfm-0 gtk
+>x11-libs/vte-0 python vala
+>x11-misc/light-locker-0 gtk3
+>x11-misc/lightdm-0 pantheon gtk gnome
+>x11-misc/mozo-0 gtk3
+>x11-misc/slim-0 -branding
+>x11-misc/xdg-utils-0 -perl
+>x11-misc/xscreensaver-0 -perl
+>x11-themes/arc-theme-0 xfce
+>x11-themes/gnome-icon-theme-0 -branding
+>x11-themes/gnome-themes-standard-0 gtk
+>x11-themes/gtk-engines-murrine-0 -themes
+>x11-themes/qtcurve-0 qt4 qt5 gtk
+>x11-wm/jwm-0 nls
+>x11-wm/marco-0 gtk3
+>x11-wm/compiz-0 gtk
+>xfce-base/xfce4-session-0  nls
+>xfce-base/xfce4-settings-0 upower libnotify libcanberra -xklavier
+>xfce-extra/xfce4-pulseaudio-plugin-0 keybinder
+>xfce-extra/xfce4-taskmanager-0 gtk3
+>xfce-extra/tumbler-0 curl
+>gnome-extra/libgsf-0 gtk
+>games-emulation/ppsspp-0 -sdl
+>games-emulation/vbam-0 -wxwidgets gtk nls
+>games-roguelike/nethack-0 experimental -X
+>games-roguelike/cataclysm-dda-0  -nls sound
+>games-strategy/wesnoth-0 dedicated nls server
+>games-util/steam-client-meta-0 flash -steamfonts s3tc trayicon pulseaudio
+>games-util/steam-games-meta-0 s3tc
+>media-libs/gst-plugins-base-0 theora
+>media-libs/libsdl2-0 haptic
+>net-libs/libpcap-0 netlink
+>net-libs/polarssl-0 havege
+>dev-qt/qtcore-0 icu
+>dev-qt/qt-creator-0 git autotools cmake webkit python doc
+>virtual/notification-daemon-0 gnome
+>dev-libs/boost-0 context
+>dev-libs/botan-0 -bindist
+>media-libs/libmypaint-1.3.0_beta1 gegl
+# required by dev-libs/libindicate-12.10.1-r2::gentoo[gtk]
+# required by mail-client/claws-mail-3.15.0::gentoo[notification,libindicate]
+# required by claws-mail (argument)
+>=dev-libs/libdbusmenu-12.10.2-r2 gtk3
+# required by mail-client/claws-mail-3.15.0::gentoo[notification,libindicate]
+# required by claws-mail (argument)
+>=dev-libs/libindicate-12.10.1-r2 gtk

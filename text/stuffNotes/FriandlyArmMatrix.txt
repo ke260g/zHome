@@ -1,0 +1,52 @@
+Matrix - 2'8 SPI Key TFT                , LCD-on-phone
+Matrix - 3-Axis Digital Accelerometer   , iface: SPI/I2C
+Matrix - 3-Axis Digital Compass         , iface: I2C
+Matrix - 4-Digit 8-Segment Display      , serial-input
+Matrix - Analog to Digital Converter    , ADC, I2C
+Matrix - Ball Rolling Switch            ,
+Matrix - Button
+Matrix - Buzzer
+Matrix - CAM500A
+Matrix - CAM500B
+Matrix - Compact Kit
+Matrix - Compact Kit B
+Matrix - Easy Multiplexing Board for M1
+Matrix - EEPROM                         , I2C, NVCM, AT24LC04
+Matrix - Fire Sensor
+Matrix - GPS                            , UART
+Matrix - I2C LCD1602                    , I2C
+Matrix - I2C LCD1602 Keypad             , I2C
+Matrix - IR Counter                     , 红外光电发射
+Matrix - IR Receiver                    , 红外光电接收
+Matrix - Joystick                       , 摇杆
+Matrix - LCD2USB
+Matrix - LED
+Matrix - L298N Motor Driver,            , 电机驱动
+Matrix - MQ-2 Gas Sensor                , 煤气检测
+Matrix - MQ-3 Gas Sensor
+Matrix - NanoHat PCM5102A               , 立体声数字音频解码
+Matrix - NanoHat Proto
+Matrix - One Touch Sensor               , 单点触控
+Matrix - Photoresistor                  , 光敏电阻, 模拟信号输出
+Matrix - Potentiometer                  , 电位计
+Matrix - Power Dock for NanoPi NEO
+Matrix - Pressure and Temperature Sensor, I2C
+Matrix - Relay,                         ,
+Matrix - RGB LED
+Matrix - Rotary Encoder
+Matrix - RTC                            , RTC
+Matrix - Soil Moisture Sensor
+Matrix - Sound Sensor
+Matrix - Temperature and Humidity Sensor
+Matrix - Temperature Sensor
+Matrix - T-Cobbler40 for Pi
+Matrix - Thermistor
+Matrix - TTL to RS232
+Matrix - UNO Dock for NanoPi NEO
+Matrix - Ultrasonic Ranger
+Matrix - USB Camera(FA-CAM202)
+Matrix - USB WiFi
+Matrix - Water Sensor
+Matrix - YS6000 (SD WiFi & Bluetooth)
+Matrix - 4G module ME909u-521
+Matrix - LTE Antenna

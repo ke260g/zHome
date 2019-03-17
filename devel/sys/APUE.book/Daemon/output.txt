@@ -1,0 +1,2 @@
+Just test the stderr.
+After dup2, fd0 is 0, fd1 is 1, fd2 is 2

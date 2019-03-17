@@ -1,0 +1,15 @@
+drivers/media/platform/s3c-camif/
+arch/arm/plat-samsung/setup-camif.c     helper-function for s3c-camif
+arch/arm/mach-s3c24xx/common.c
+                    /pll-s3c2440.c
+
+arch/arm/plat-samsung/*.c   dev-uart.c
+arch/arm/plat-samsung/include/plat/*.h      #include<plat/*.h>
+arch/arm/mach-s3c24xx/*.c   {common-smdk.c, mach-smdk2440.c} board-level init
+arch/arm/mach-s3c24xx/include/mach/*.h      #incluce<mach/*.h>
+arch/arm/mach-s3c24xx/*.h                   can't be used by #include<>
+arch/arm/include/
+
+include/media/s3c_camif.h
+drivers/media/platform/s3c-camif/camif-regs.h
+drivers/media/platform/s3c-camif/camif-core.h

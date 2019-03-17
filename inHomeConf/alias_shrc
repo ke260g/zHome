@@ -1,0 +1,90 @@
+# common used apps alias
+alias wgethtml="wget -c -r -np -k -p"
+alias cpbr="cp -br"
+alias rm="trash-put"
+alias trash-empty="echo Can not empty trash easily!!"
+alias v="vim"
+alias m="make"
+alias tx="tmux"
+alias rg="ranger"
+alias gsh="globash"
+alias chrome-socks5="google-chrome-stable --proxy-server="socks://127.0.0.1:1080""
+# alias steam="vblank_mode=0 optirun -b primus steam"
+alias git="LANG=UTF-8 git"
+
+# daily system control
+alias hpxy="export http_proxy=http://127.0.0.1:8123"
+alias dhcpd_restart="su -c 'service NetworkManager restart; service dhcpd restart'"
+alias cleanmem="su -c'sync && echo 3 > /proc/sys/vm/drop_caches'"
+alias ntpsync="su -c 'ntpdate -u 202.120.2.101 && hwclock -w'"
+alias usbserial="su -c 'modprobe usbserial'"
+
+# desktop environment
+alias pb="sleep 1 && xset dpms force off"
+alias xf-hib="xfce4-session-logout --hibernate"
+alias xf-sus="xfce4-session-logout --suspend"
+alias tpon='synclient touchpadoff=0'  # turn off the touchpad
+alias tpoff='synclient touchpadoff=1' # turn on the touchpad
+alias fxsg="fcitx& ; sogou-qimpanel&" # input method
+alias kfs="killall fcitx& ; killall sogou-qimpanel&" # kill
+alias ks="killall stardict"
+alias swapcc="setxkbmap -option "ctrl:swapcaps""
+alias ccwifi="su -c 'rfkill unblock wlan;\
+    create_ap wlp0s20u1 enp5s0 cc 1234qwerasdf'"
+
+# for complier convenience
+## for x86 assembler
+alias i386as="as --32 -g -o"
+alias i386ld="ld -g -melf_i386 -o"
+alias i386c="gcc -pipe -Wall -m32 -Wshadow -std=gnu99 -O2 -ggdb -o"
+
+alias make_arm="make ARCH=arm CROSS_COMPILE=arm-linux-"
+alias rm_elf="rm `file *|grep ELF|awk '{print $1}'|sed s/://`"
+
+# C_OPTS means complier options
+CUSTOM_CFLAGS="-pipe -Wall -Wshadow -O2 -g"
+OCV_C_OPTS=`pkg-config --cflags opencv --libs opencv`
+GTK3_C_OPTS=`pkg-config --cflags gtk+-3.0 --libs gtk+-3.0`
+GLIB_C_OPTS=`pkg-config --cflags glib-2.0 --libs glib-2.0`
+GSL_C_OPTS="-lm -lgsl -lgslcblas -DHAVE_INLINE -DGSL_C99_INLINE"
+OGL_C_OPTS="-lGL -lGLU -lglut"
+alias c="gcc ${CUSTOM_CFLAGS} -std=gnu99 -o"
+alias C="g++ ${CUSTOM_CFLAGS} -std=c++11 -o"
+alias g++11_cc="g++ ${CUSTOM_CFLAGS} -std=c++11"
+alias gtk3_cc="gcc ${CUSTOM_CFLAGS} ${GTK3_C_OPTS} -std=gnu99"
+alias cv_cc="g++ ${CUSTOM_CFLAGS} ${OCV_C_OPTS} -std=c++11"
+alias gsl_cc="g++ ${CUSTOM_CFLAGS} ${GSL_C_OPTS} -std=c++11"
+alias gl_cc="g++ ${CUSTOM_CFLAGS} ${OGL_C_OPTS} -std=c++11"
+
+# custom devel convenience
+alias rgb_name_table="less /usr/share/X11/rgb.txt"
+alias ldconfig_pseudo="export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:."
+alias cllh="cp ~/.os/devel/c/cll.h ."
+alias errno_table="cat ~/.os/devel/c/errno_str_table.h"
+alias csrbq="cscope -Rbq"
+alias dateNum="date "+%Y%m%d_%H%M%S""
+
+# indent program shell-script
+alias cindent="~/.os/devel/indent/cindent.sh"       # c/cpp indent
+alias mlindent="~/.os/devel/indent/mlindent.sh"     # *ml language indent
+alias lnxindent="~/.os/devel/indent/lnxindent.sh"     # linux c indent
+alias krindent="~/.os/devel/indent/krindent.sh"     # k and r c indent
+
+# system resources monitor
+alias dt="dstat --net --mem --disk --cpu"
+alias ds="dstat --net --mem --disk --cpu"
+alias dfth="df -Th"
+alias dfht="df -Th"
+alias acpiv="acpi -V"
+alias date_advc="date +20%y,%m,%d_%H:%M"
+
+# portage routine control
+alias puse="su -c 'vim /etc/portage/package.use'"
+alias pmask="su -c 'vim /etc/portage/package.mask'"
+alias punmask="su -c 'vim /etc/portage/package.unmask'"
+alias pmake_conf="su -c 'vim /etc/portage/make.conf'"
+alias pworld="su -c 'vim /var/lib/portage/world'"
+alias eix0="export EIX_LIMIT_COMPACT=0"
+alias eix10="export EIX_LIMIT_COMPACT=10"
+alias useg="cat /usr/portage/profiles/use.desc"
+alias usel="cat /usr/portage/profiles/use.local.desc"

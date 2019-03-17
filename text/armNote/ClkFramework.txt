@@ -1,0 +1,15 @@
+
+Documentation/clk.txt
+
+include/linux/clk.h
+    struct clk *clk_get(struct device *dev, const char *con_id)     drivers/clk/clkdev.c
+    int clk_set_rate(struct clk *clk, unsigned long rate)    drivers/clk/clk.c
+    int clk_enable(struct clk *clk)    drivers/clk/clk.c
+
+drivers/clk/samsung/{ clk-s3c2410.c,
+            clk.h, clk.c,
+            clk-pll.h, clk-pll.c }
+    s3c2410_common_clk_init();
+    GATE, register a new clock ?
+
+

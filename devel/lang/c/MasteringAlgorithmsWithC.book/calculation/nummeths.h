@@ -1,0 +1,18 @@
+int interpol(const double *x,
+        const double *fx,
+        int n,
+        const double *z,
+        double *pz,
+        int m);
+
+void lsqe(const double *x,
+        const double *y,
+        int n,
+        double *b1,
+        double *b0);
+
+int root(double (*f)(double x),
+        double (*g)(double x),
+        double *x,
+        int *n,
+        double delta);

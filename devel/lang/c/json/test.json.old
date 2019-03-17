@@ -1,0 +1,12 @@
+{
+	"string_value" : "Haorong",
+	"number_value" : "20",
+	"object_value" : { "member0" : "str", "member1" : "str" },
+	"array_value" : [ "str", 1, "gg" ],
+	"bool_value_t" : true,
+	"bool_value_f" : false,
+	"null_value" : null,
+    {
+        "hex_value" : "\uface"
+    }
+}

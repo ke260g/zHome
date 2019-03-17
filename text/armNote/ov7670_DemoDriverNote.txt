@@ -1,0 +1,60 @@
+img_buff[] {
+    phy_base,
+    virt_base
+};
+
+camif_init() :: to activate the 'cmos'
+
+fh->dev == pdev
+
+camif_open() :: to make the 'cmos-input-data' readable on mem.
+    pdev->state = CAMIF_STATE_READY;
+	->init_camif_config(fh);
+        set the src-img-size
+        pdev->state == CAMIF_STATE_READY;
+	    ->update_camif_config(fh, CAMIF_CMD_STOP);	//call update_camif_regs()
+            switch(fh->dev->state):
+            ->update_camif_regs();
+                ->update_source_fmt_regs(pdev);     CISRCFMT
+	            ->update_target_wnd_regs(pdev);     CIWDOFST
+	            ->update_target_fmt_regs(pdev);     PpathTargetFmtRegs = img_buff[].phy_base
+	            ->update_target_zoom_regs(pdev);    PpathTargetZoomRegs
+	->init_image_buffer();
+        allocate the mem-space,
+        assign value for img_buff[].phy_base, img_buff[].virt_base
+    ->request_irq();    for Cpath, on_camif_irq_c()
+                        for Ppath, on_camif_irq_p()
+    ->soft_reset_camif();
+	->update_camif_config(fh, 0);
+        switch(fh->dev->state)
+         ->update_camif_regs();
+                ->update_source_fmt_regs(pdev);     CISRCFMT
+	            ->update_target_wnd_regs(pdev);     CIWDOFST
+	            ->update_target_fmt_regs(pdev);     PpathTargetFmtRegs = img_buff[].phy_base
+	            ->update_target_zoom_regs(pdev);    PpathTargetZoomRegs
+
+camif_read()
+    ->start_capture();
+        set CIWDOFST
+        set CIPRSCCTRL, Ppath
+	    pdev->state = CAMIF_STATE_PREVIEWING;
+        set CIIMACPT, to cause Ppath interrupt
+
+    ->disable_irq() p/c-path
+    ->copy_to_user() DMA-mem-area
+    ->enable_irq() p/c-path.
+
+update_camif_config(, cmd)
+    switch(pdev->state) :
+                    CAMIF_STATE_READY   ->  update_camif_regs() // config the regs directly.
+                    CAMIF_STATE_PREVIEWING  pdev-cmdcode obtain value
+                    CAMIF_STATE_CODECING,   pdev-cmdcode obtain value
+
+############################################################################################
+update_camif_config() is to configurate the pdev->cmdcode,
+    depending on pdev-state
+
+on_camif_irq_c/p() is to call related update_*_regs();
+
+update_*regs() is the real-func to change the regs-value,
+    which actually control how the camif work.

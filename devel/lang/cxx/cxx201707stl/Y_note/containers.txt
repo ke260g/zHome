@@ -1,0 +1,104 @@
++ container: a type whose objects hold a collection of objects of a given type
++ c++ containers:
+    sequential containers: array, vector, forward_list, list, deque 
+    container adaptors: stack, queue, priority_queue
+    associative containers: set, multiset, map, multimap
+    unordered associative containers: unordered_set, _multiset, _map, _multimap
+
++ sequential containers: 增删灵活、访问灵活以及访问速度的权衡
+    - order-control-able, value-independent-order, resize-able	
+    - types: arrary, vector, string, forward_list, list, deque
+    array: fixed size, fast random access
+    vector: flexiable-size array, fast random access, 
+            insert/delete element(except end) may be slow
+    string: like vector<char>
+    forward_list: single-linked-list, only sequential access in one direction, 
+            fast insert/delete at any point
+            can’t decrement iterator, not supported back()
+    list: doubly-linked-list, only bidirectional sequential acces, 
+            fast insert/delete at any point
+            iterator只能++/--; 不能 += n; 也没有size();
+    deque: double-ended-queue, 
+            supprots fast random access fast insert/delete at front or back
+            but insert/delete element in the middle is really expensive.
+            deque的本质是多块游离的vector用list连在了一起
+    + iterator 不能用 大于/小于 比较的！！！
+    + container 实例化时，填上同一类型的某个container实例中两个iterator作为参数，
+                复制出原container 某段连续sub-element。
+        vector<string> sv = { "darkness", "chaos", "corruption" };
+        vector<string> svDup(sv.begin(), sv.end());
+    + container 的 assign参数 形式上同于实例化时传递的参数。
+        /* 实例化 */ class a(params);  
+        /* assign */ class a; a.assign(params);
+    + emplace_back(), emplace_front(), emplace_before()
+        参数会传入到 container的element去构造，而无需先构造element再push_back()
+        class dat {
+            public:
+                int idx;
+                string val;
+                dat(int idx, string val) : idx(idx), val(val) { }
+        };
+        vectorc<dat> arv;
+        arv.emplace_back(0, "implementation");
+    + at(index) 能实现random-access的越界感知(try, throw), 但效率比起[index]慢超多的。
+    + ::reserve(), 仅仅申请内存(capacity)，不影响element，如果传入参数小于size，啥事也没发生。
+    + ::shrink_to_fit(), 使capacity 等于 size()
+    + ::assign() 会自动完成简单类型间的转换, 例 const char * 到 string
+        std::list<const char *> slist_l = { "violin", "viola", "cello" };
+        vector<string> svec_r; 
+        svec_r.assign(slist_l.cbegin(), slist_l.cend());
+    + ::insert(多个element), 返回最后一个inserted element 的iterator
+    + forward_list 的操作比较绕, end()指向最后一个元素的下一个地址, 而且是非法的!
+        这样的导致algorithm各种问题,建议能不用forward_list就不用 
+        
++ container adaptors: 没有iterator, 不支持随机访问
+    个人观点，理论上，list, forward_list 使用stack, queue的性能较好
+    然而，默认的stack/queue的默认container类型是deque。
+    再者, priority_queue的默认只支持vector/deque, 不支持list/forward_list
+    + stack: FILO: /* can access first element only */
+        vector<element_type> vec = { ... }; 
+        stack<element_type, vector<element_type>> stk(vec);
+        list<element_type> ls = { ... };
+        stack<element_type, list<element_type>> stk(ls);
+        stk.push(...); stk.pop(); /* add/remove */
+        stk.top(); /* access first element */
+    + queue: FIFO: /* can access first and last element only */
+        container<element_type> vec = { ... }; 
+        queue<element_type, container<element_type>> que(vec);
+        que.push(...); que.pop(); /* add/remove */
+        que.front(); /* access first element */
+        que.end(); /* access last element */
+    + priority_queue: 默认不能通过list, forward_list 构造。因其无"比较函数"吗？
+        默认支持deque, vector
+        /* can access first element only */
+        vector<element_type> vec = { ... };
+        priority_queue<element_type, vector<element_type>> pr_que(vec);
+        pr_que.push(...); pr_que.pop(); /* add/remove */
+        pr_que.top(); /* access first element */
+        本质: 头部永远是"最大"值，push只需与头比较，但是pop之后，要遍历找Max
+
++ associative containers: set, multiset, map, multimap
+    底层用Red-Black-Tree极速排序
+    + set: 每个element不会重复，添加重复值会被"discard"
+        key 即 value, 且key不能修改,只能增删,
+        iterator是key即value,不是pair只是insert返回是pair
+        set<int> setObj;
+        set<int>::iterator it;
+        pair<set<int>::iterator, bool> set_retval;
+        set_retval = setObj.insert(val);
+        /* set_retval.first is the inserted iterator */
+        /* set_retval.second indicate whether input a new element */
+    + map: just like dictionary in python
+        key 不能修改, 只能增删
+        map<char, int> mary;
+        pair<map<char, int>::iterator, bool> map_retval; // the same as sets
+        iterator is pair<char, int>;
+        for(const auto & it : mary) {
+            /* it.first, access key */;
+            /* it.second, access value */;
+        }
++ unordered associative containers:底层用hash
+    + associative containers 的不排序版本
+    + 原始版本每当增删都会重新排序
+    + 加上前缀 unordered_即可
+    + 但是排序不排序的不的性能不好比较

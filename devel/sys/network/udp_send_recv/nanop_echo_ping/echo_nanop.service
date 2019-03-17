@@ -1,0 +1,11 @@
+[Unit]
+Description=Daemon echo nanop message.
+After=NetworkManager.service
+
+[Service]
+Type=oneshot
+ExecStart="/etc/init.d/echo_nanop"
+#Restart=on-failure
+
+[Install]
+WantedBy=network-online.target

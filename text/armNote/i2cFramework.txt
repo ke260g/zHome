@@ -1,0 +1,83 @@
+SMBus (System Management Bus), mostly widely subset of i2c.
+
+SMBus can be used as i2c.
+
+Terms:
+  Bus    -> Algorithm: struct i2c_algorithm
+            Adapter: struct i2c_adapter
+  Device -> Driver: struct i2c_driver
+            Client: struct i2c_client
+##### struct diagram
+    kernel  -> i2c_adapter-0 (an i2c_algorithm)
+                -> i2c_client-0 (i2c_driver)
+                -> i2c_client-1 (i2c_driver)
+                -> i2c_client-2 (i2c_driver)
+            -> i2c_adapter-1 (another i2c_algorithm)
+                -> i2c_client-0 (i2c_driver)
+                -> i2c_client-1 (i2c_driver)
+
+##### a driver diagram
+    -> xx_init()
+    -> i2c_add_driver()
+    -> xx_attach_adpater()
+    -> i2c_probe()
+    -> xx_detect()
+    -> i2c_client initialize
+    -> i2c_attach_client()
+    -> xx_init_client()
+
+###### kernel i2c subsystem
+    -> i2c_init()   drivers/i2c/i2c-core.c
+        -> bus_register(&i2c_bus_type);
+        -> i2c_add_driver(&dummy_driver);
+    -> i2c_exit()   drivers/i2c/i2c-core.c
+        -> i2c_del_driver(&dummy_driver);
+        -> bus_unregister(&i2c_bus_type);
+
+
+##### drivers/i2c/buses/i2c-s3c2410.c
+    subsys_initcall(i2c_adap_s3c_init);                 /* start */
+        -> i2c_adap_s3c_init();
+            -> platform_driver_register(&s3c24xx_i2c_driver);
+                -> s3c24xx_i2c_driver->probe
+                    1. allocate a 'struct i2c_adapter' and assign value
+                    2. obtain the i2c clock-sources
+                    3. map the regs of adapter to the mem
+                    4. allocate interrupt handler
+                    5. initialize i2c controller
+                    6. add the i2c-adapter to the kernel i2c-subsystem
+                /* the 'struct platform_driver' member 'probe' will be called
+                 * when the 'struct platform_driver' has been registered */
+
+    module_exit(i2c_adap_s3c_exit); /* end */
+        -> i2c_adap_s3c_exit();
+            -> platform_driver_unregister(&s3c24xx_i2c_driver);
+                -> s3c24xx_i2c_driver->remove:
+                /* the 'struct platform_driver' member 'remove' will be called
+                 * when the 'struct platform_driver' has been unregistered */
+
+##### kernel-bus-system
+        -> i2c-bus              /* drivers/i2c/i2c-core.c */
+            -> i2c-adapter      /* drivers/i2c/buses/*.c */
+
+=====================   idr  =================================
+===================== client =================================
+<linux/i2c-dev.h>
+
+File: Documentation/i2c/dev-interface
+
+Implementations details
+1* open() /dev/i2c-%d, ioctl()
+2* i2c-dev.c
+    -> i2cdev_open()
+    -> i2cdev_ioctl()
+3* i2cdev_ioctl()
+    cmds divided into 2 parts:
+    3.1* directly in i2c-dev.c (I2C_SLAVE,...)
+    3.2* converted to kernel-func calls by i2c-dev.c
+        (I2C_FUNCS, i2c.h)
+        (I2C_SMBUS, i2c-core.c:i2c_smbus_xfer())
+The i2c-dev driver is responsible for checking all the parameters that
+come from user-space for validity.
+This means that I2C bus drivers don't need to implement
+anything special to support access from user-space.

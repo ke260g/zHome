@@ -1,0 +1,12 @@
+style "xfdesktop-icon-view" {
+	XfdesktopIconView::label-alpha = 0
+	base[NORMAL] = "#000000"
+	base[SELECTED] = "#FFFFFF"
+	base[ACTIVE] = "#71FFAD"
+	
+	fg[NORMAL] = "#ffffff"
+	fg[SELECTED] = "#000000"
+	fg[ACTIVE] = "#71FFAD"}
+	widget_class
+	"*XfdesktopIconView*" 
+style "xfdesktop-icon-view"

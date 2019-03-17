@@ -1,0 +1,10 @@
+>app-accessibility/espeak-0 portaudio
+>app-arch/tar-0 -minimal
+>app-arch/p7zip-0 -wxwidgets rar
+>app-crypt/gcr-0 gtk
+>app-crypt/pinentry-0 gnome-keyring gtk -qt5 -qt4
+>app-doc/abs-guide-0 -pdf
+>app-doc/doxygen-0 -qt5 doxysearch clang dot
+>app-doc/kicad-doc-0 linguas_en
+>app-editors/emacs-0 -gtk3 -X -xpm
+>app-editors/mousepad-0 gtk3

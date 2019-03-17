@@ -1,0 +1,42 @@
+char-dev:
+    struct file_operations {
+        ...
+        ...
+    }
+    implement several necessary members;
+
+int regsiter_chrdev(unsigned int major,
+        const char * name, struct
+        file_operations *fops);
+
+modules_init(func);     -->     insmod
+modules_exit(func);     -->     rmmod
+They are macro, so the type of func is not limited.
+
+swi: software interrupt instruction
+
+异常处理:
+    trap_init(), init_irq();
+    trap_init() { /* 异常 */
+        异常向量 == 固定位置上的一堆指令
+        arm 异常向量base_addr : 0x00000000 or 0xffff0000
+        trap_init() 把某些异常向量 copy 到 0xffff0000
+        首次复制的 异常向量 是为了 准备环境
+        然后再跳转到真正的异常处理实现
+    }
+    init_irq() { /* 中断 */
+        中断是一种异常，中断与硬件驱动密切相关，
+        内核提炼出中断的共性，实现一个相关的机制。
+    }
+
+arm-linux 实现的5种异常:
+    undefined-instruction
+        {break, thumb-break, mrc};
+    preload-instruction abortion
+        {addr-translation-fault};
+    ask-data abortion
+        {section/page-translation-fault,
+         section-permission-fault, page-permission-fault};
+    interruption;
+        { gpio-pin, wdt, timer(pwm), usb, uart};
+    swi;

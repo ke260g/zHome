@@ -1,0 +1,26 @@
+Top Ten Disk Space Usage
+for  /var/log /home Directories
+
+The /var/log Directories:
+1:	888K	/var/log/portage/elog
+2:	404K	/var/log/teamviewer9
+3:	369M	/var/log/journal/6ce2f8d93c26c6d690825a815558611e
+4:	28K	/var/log/libvirt/qemu
+5:	16M	/var/log
+6:	16K	/var/log/wicd
+7:	12K	/var/log/paludis
+8:	12K	/var/log/mysql
+9:	12K	/var/log/cpufreq-bench
+10:	8.0K	/var/log/libvirt
+
+The /home Directories:
+1:	1000K	/home/ll/.mozilla/firefox/0hwsr8ie.default/extensions/{a7c6cf7f-112c-4500-a7ea-39801a327e5f}/chrome
+2:	996K	/home/ll/devel/C/link_list
+3:	984K	/home/ll/.config/audacious/playlists
+4:	980K	/home/ll/.local/share/data/Kingsoft/wps/Kingsoft/office6/backup
+5:	960K	/home/ll/.vim/bundle/Vundle.vim/.git/objects/pack
+6:	944K	/home/ll/devel/C/shudu
+7:	924K	/home/ll/.vim/bundle/ctrlp.vim/.git/objects/pack
+8:	864K	/home/ll/.vim/bundle/xptemplate/readme-img/600x
+9:	824K	/home/ll/photo/devel/asm_x86/sse
+10:	800K	/home/ll/.neocon/keyword_patterns

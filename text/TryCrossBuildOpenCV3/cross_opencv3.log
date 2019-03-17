@@ -1,0 +1,25 @@
+[1]
+in  platforms/linux/arm-gnueabi.toolchain.cmake
+set the toolchain and cflags, link-flags
+
+
+
+[2]
+need static-zlib-lib, in toolchain
+zlib should compile with -fPIC
+./configure --static
+edit Makefile, CFLAGS add -fPIC
+include headers: zlib.h, zconf.h
+static lib: libz.a
+
+export CC=arm-linux-gcc CXX=arm-linux-g++
+./configure --prefix=$TOOLROOT --host arm CFLAGS="-O2 -fPIC -mfpu=neon" CXXFLAGS="-O2 -fPIC -mfpu=neon"
+make && make install
+[3] need static-jpeg, in toolchain
+[4] need static-tiff, in toolchain
+[5] png
+[6] jasper
+[7] v4l
+
+./configure --prefix=$TOOLROOL
+[8] ffmpeg > libavformat
