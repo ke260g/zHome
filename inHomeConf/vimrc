@@ -6,7 +6,7 @@ set termencoding=utf-8
 set fileencodings=utf-8,gbk,latin1
 
 " enhanced tab completion. These can be done in the user vimrc file.
-set suffixes+=.info,.aux,.log,.dvi,.bbl,.out,.o,.lo
+" set suffixes+=.info,.aux,.log,.dvi,.bbl,.out,.o,.lo
 
 set number " line number
 set foldmethod=syntax
@@ -34,18 +34,19 @@ set hlsearch
 "set noerrorbells
 set magic "set regex
 set laststatus=2
+set ambiwidth=double
 syntax on
 colorscheme molokai "desert
 filetype indent on
 filetype plugin on
 
-" strange filetype foldmethod set to `indent' instead of syntax
-autocmd FileType html,xhtml,xml,javascript setlocal foldmethod=indent
-autocmd FileType verilog setlocal foldmethod=indent
-autocmd FileType python setlocal foldmethod=indent
+"# strange filetype foldmethod set to `indent' instead of syntax
+"autocmd FileType html,xhtml,xml,javascript setlocal foldmethod=indent
+"autocmd FileType verilog setlocal foldmethod=indent
+"autocmd FileType python setlocal foldmethod=indent
 
-" detect glsl (opengl shader language)
-autocmd! BufNewFile,BufRead *.glsl,*.vs,*.fs set ft=glsl
+"# detect glsl (opengl shader language)
+"autocmd! BufNewFile,BufRead *.glsl,*.vs,*.fs set ft=glsl
 
 """"""" custom hotkey
 "switch window
@@ -69,14 +70,13 @@ map <F2> :NERDTreeToggle<CR>
 map <F3> :TagbarToggle<CR>
 map <F4> :SyntasticToggleMode<CR>
 "map <F4> :GundoToggle<CR>
-"map <F6> :SrcExplToggle<CR> " needs ctags, no so-friendly
 "map <F7> :RainbowParenthesesToggleAll<CR> "conflict with folder
-map <F8> :Tsh<CR>
+"map <F8> :Tsh<CR>
 
 " quit
 nmap qq :q!
 nmap qw :wq
-" syntax check jump
+"syntax check jump
 nmap fn :lnext<CR>
 nmap fp :lprevious<CR>
 """""""""""""""""""""""""""""""""""""
@@ -84,57 +84,49 @@ nmap fp :lprevious<CR>
 "vundle, a plugin manager
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
-Plugin 'VundleVim/Vundle.vim' "vundle
-Plugin 'sjl/gundo.vim'      "undo tree
+Plugin 'jrosiek/vim-mark'     "new generation's marks
+"Plugin 'sjl/gundo.vim'       "undo tree
 Plugin 'scrooloose/syntastic' "syntax checker
-Plugin 'tpope/vim-surround' "powerful edit tags for xsl
-Plugin 'godlygeek/tabular' "auto align
-Plugin 'mhinz/vim-signify' "hunks
-Plugin 'majutsushi/tagbar' " new generation of taglist
-Plugin 'EasyMotion' "a revolutional moving cursor plugin
-Plugin 'Shougo/vimproc.vim' "powerful vim plugin libs
-Plugin 'kien/rainbow_parentheses.vim' " as its name
-Plugin 'Shougo/vimshell.vim' "vim shell
-"Plugin 'vim-scripts/Vimball' "vim shell depends
-Plugin 'rking/ag.vim' "code searcher, ag front end
-Plugin 'wesleyche/SrcExpl.git' "preview the func and vars
-" auto complete
+"Plugin 'tpope/vim-surround'  "powerful edit tags for xsl
+Plugin 'godlygeek/tabular'    "auto align
+Plugin 'mhinz/vim-signify'    "show git/svn status on column
+Plugin 'majutsushi/tagbar'    "new generation of taglist
+Plugin 'EasyMotion'  "a revolutional moving cursor plugin
+Plugin 'matchit.zip' "easy jump in the xml , html
+Plugin 'rking/ag.vim' "code searcher, silver_searcher_ag
+"auto complete
 Plugin 'ervandew/supertab' "powerful autocomplete <Tab>
-Plugin 'Shougo/neocomplcache.vim' "autocomplete
-Plugin 'Rip-Rip/clang_complete' " clang_complete
-Plugin 'davidhalter/jedi-vim' " python complete with jedi
-"Plugin 'Valloric/YouCompleteMe'
-Plugin 'drmingdrmer/xptemplate' "c-autocomplete
-Plugin 'The-NERD-Commenter' "commenter
-" vision
-Plugin 'bling/vim-airline' "status line main body
-Plugin 'vim-airline/vim-airline-themes'
-Plugin 'tpope/vim-fugitive' "airline extension for branch
-Plugin 'bling/vim-bufferline' "status line plugin
-Plugin 'Yggdroot/indentLine' "indent color
+Plugin 'drmingdrmer/xptemplate'   "c-autocomplete
+Plugin 'The-NERD-Commenter'       "commenter
+"auto complete advanced
+"Plugin 'ncm2/ncm2'                "neocomplete > neocomplecache > deoplete > ncm > ncm2
+"Plugin 'roxma/nvim-yarp'          "deps for ncm2
+"Plugin 'roxma/vim-hug-neovim-rpc' "deps for ncm2
+"Plugin 'ncm2/ncm2-path'           "path complete for abs/cwd/buffer-path
+"Plugin 'ncm2/ncm2-bufword'        "word complete on current buffer
+"Plugin 'ncm2/ncm2-pyclang'        "powerful complete
+"Plugin 'justmao945/vim-clang'     "clang_complete with async, quick
+Plugin 'Valloric/YouCompleteMe'    "conflict with clang_complete/vim-clang/supertab/ncm2
+"vision
+Plugin 'bling/vim-airline'
+Plugin 'Yggdroot/indentLine'    "show vertical indent line
 Plugin 'ShowTrailingWhitespace' "view trailing blank-space
-" file browser
-Plugin 'kien/ctrlp.vim' "cttl - p, excellent file searcher
-Plugin 'scrooloose/nerdtree' "tree file browser
-" languages syntax
-Plugin 'djoshea/vim-matlab' "matlab syntax
-Plugin 'djoshea/vim-matlab-fold' "matlab folder
-Plugin 'fatih/vim-go'      "go, syntax
-Plugin 'peterhoeg/vim-qml' "qml, syntax
-Plugin 'vhda/verilog_systemverilog.vim' " verilog
-" for webpages
-Plugin 'mattn/emmet-vim' " html css plugin, many function
-"Plugin 'matchit.zip' " easy jump in the xml , html
-Plugin 'pangloss/vim-javascript' " modern javascript syntax
-Plugin 'thisivan/vim-matchit'
-Plugin 'othree/xml.vim' " auto edit tags
-Plugin 'othree/html5.vim' " html5 powerful plugin
-Plugin 'jrosiek/vim-mark' " new generation's marks
-" man pages
-Plugin 'vim-utils/vim-man' " manpager
-" syntax for asciio, hacker-like flow-graph-drawing
-" Plugin 'vim-scripts/DrawIt'
-Plugin 'tikhomirov/vim-glsl'
+"file browser
+Plugin 'kien/ctrlp.vim'         "ctrl-p, excellent file searcher
+Plugin 'scrooloose/nerdtree'    "tree file browser
+"syntax
+"Plugin 'vim-scripts/DrawIt'             "syntax for asciio
+"Plugin 'tikhomirov/vim-glsl'            "syntax for glsl
+"Plugin 'djoshea/vim-matlab'             "matlab syntax
+"Plugin 'djoshea/vim-matlab-fold'        "matlab folder
+"Plugin 'fatih/vim-go'                   "go, syntax
+"Plugin 'peterhoeg/vim-qml'              "qml, syntax
+"Plugin 'vhda/verilog_systemverilog.vim' "verilog
+"Plugin 'mattn/emmet-vim'                "html css plugin, many function
+"Plugin 'pangloss/vim-javascript'        "modern javascript syntax
+"Plugin 'thisivan/vim-matchit'           "html css
+"Plugin 'othree/xml.vim'                 "auto edit tags for xml
+"Plugin 'othree/html5.vim'               "html5 powerful plugin
 call vundle#end()
 
 let g:NERDTreeShowBookMarks=1 " NERDTree
@@ -144,33 +136,26 @@ let g:indentLine_color_term = 900
 let g:indentLine_color_dark = 1
 
 let mapleader=";" "for mark, a powerful mark plugin
-
 let g:ag_working_path_mode="r" "ag.vim, to search from project root instead of the cwd
-
-let g:SrcExpl_refreshTime=1 " Srcexpl,
 
 " xml.vim, a powerful xml plugin
 let g:xml_syntax_folding=1
 let g:xml_namespace_transparent=1
 
-let g:tabular_loaded=1 " tabular, a auto align plugin
+let g:tabular_loaded=1 "tabular, a auto align plugin
 
 " statusline
 let g:Powerline_loaded=0
-"let g:airline_theme="dark"
-let g:airline_theme="durant"
-"let g:airline_section_c=airline#section#create_left(['%{getcwd()} %r %t:%n %m'])
-let g:airline_section_z=airline#section#create(['[ %b = 0x%B ]  %c : %l/%L  %p%%'])
 let g:airline#extensions#quickfix_text='Quickfix'
-let g:airline#extensions#branch#enablded=1
-let g:airline#extensions#bufferline#enablded=1
-let g:airline#extensions#bufferline#overwrite_variables=1
+let g:airline#extensions#tabline#enabled=1
 let g:airline#extensions#branch#empty_message=''
+let g:airline#extensions#branch#enablded=1
 let g:airline#extensions#syntastic#enabled=1
 let g:airline#extensions#tagbar#enabled=1
 let g:airline#extensions#csv#enabled=1
 let g:airline#extensions#hunks#enabled=1
-let g:airline#extensions#whitespace#enable=1
+let g:airline#extensions#whitespace#enabled=0
+let g:airline#extensions#whitespace#symbol='!'
 
 "vim-signify
 let g:signify_line_highligth=1
@@ -199,10 +184,6 @@ let g:html_indent_script1="auto"
 let g:html_indent_style1="auto"
 let g:html_indent_inctags = "html,body,head,tbody"
 
-" vim shell
-let g:vimshell_prompt_expr = 'escape(fnamemodify(getcwd(), ":~").">", "\\[]()?! ")." "'
-let g:vimshell_prompt_pattern = '^\%(\f\|\\.\)\+> '
-
 " xptemplate
 let g:xptemplate_brace_complete='}'
 let g:xptemplate_break_undo=1
@@ -219,20 +200,34 @@ let g:SuperTabLongestHighlight=1
 "let g:SuperTabDefaultCompletionType='<C-X><C-U>' " completefunc
 let g:SuperTabDefaultCompletionType='<C-X><C-O>' " omnifunc
 
-" clang_complete
-let g:clang_complete_copen=1
-let g:clang_periodic_quickfix=0
-let g:clang_snippets=0 " as it works not friendly
-let g:clang_close_preview=1
-let g:clang_use_library=1
-let g:clang_complete_auto = 0
-let g:clang_auto_select = 0
-let g:clang_use_library = 1
-
-"let g:clang_user_options="-DDEBUG -I/usr/lib/gcc/x86_64-pc-linux-gnu/4.9.3/include/g++-v4"
-"let g:clang_library_path='/usr/lib/llvm/4/lib64/libclang.so' " in gentoo
-"let g:clang_library_path='/usr/lib/llvm-3.8/lib/libclang.so.1' " in debian
-let g:clang_library_path='/usr/local/lib/libclang.so' " common
+"auto complete ---------------------------------
+set completeopt=noinsert,menuone,noselect
+"solution1: vim-clang, very quick(caches function type)
+let g:clang_c_options='-std=c99'
+let g:clang_cpp_options='-std=c++11 -I/usr/include/c++/6 -I/usr/include/x86_64-linux-gnu/c++/6'
+let g:clang_dotfile='.clang_complete'
+"-----------------------------------------------
+"solution2: ncm2-pyclang
+let g:ncm2_pyclang#library_path='/usr/lib/llvm-4.0/lib/libclang.so'
+let g:ncm2_pyclang#args_file_path=['.clang_complete']
+"autocmd BufEnter * call ncm2#enable_for_buffer()
+"set shortmess+=c
+"-----------------------------------------------
+"solution3: YCM only [ not work with supertab/ncm2 ]
+let g:ycm_confirm_extra_conf=0
+"let g:ycm_global_ycm_extra_conf='~/.ycm_extra_conf.py'
+let g:ycm_seed_identifiers_with_syntax=1
+let g:ycm_min_num_of_chars_for_completion=2     "min chars
+let g:ycm_collect_identifiers_from_tags_files=1 "languages identifiers
+let g:ycm_complete_in_comments=1
+let g:ycm_complete_in_strings=1
+let g:ycm_collect_identifiers_from_comments_and_strings=1
+"let g:ycm_key_invoke_completion=[ '<TAB>' ]
+"let g:ycm_key_list_stop_completion=[ '<ESC>' ]
+map gd :YcmCompleter GoToDefinitionElseDeclaration<CR>
+"nnoremap gk :YcmCompleter GoToDeclaration<CR>
+"nnoremap gj :YcmCompleter GoToDefinition<CR>
+"-----------------------------------------------
 
 " syntasitc, a syntax checker
 " set statusline+=%#warningmsg#
@@ -242,39 +237,12 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
-let g:syntastic_c_config_file=".clang_complete" "co-operate with clang_complete
+let g:syntastic_c_config_file=".clang" "co-operate with clang_complete
 let g:syntastic_c_compiler_options="-fPIC"
-let g:syntastic_cpp_config_file=".clang_complete"
+let g:syntastic_cpp_config_file=".clang"
 let g:syntastic_cpp_compiler_options="-fPIC -fpermissive -std=c++11 -std=c++14"
-"let g:ycm_python_binary_path='/home/ll/.local/anaconda3/bin/python3.6'
 
 let g:jedi#force_py_version=3
-
-" neocomplcache
-let g:acp_enableAtStartup = 0
-let g:neocomplcache_enable_at_startup=1
-let g:neocomplcache_enable_smart_case=1
-let g:neocomplcache_min_keyword_length=1
-let g:neocomplcache_min_syntax_length=1
-let g:neocomplcache_enable_auto_select=0
-let g:neocomplcache_disable_auto_complete=0
-let g:neocomplcache_enable_camel_case_completion=1
-let g:neocomplcache_enable_underbar_completion=1
-let g:neocomplcache_auto_completion_start_length=3
-let g:neocomplcache_force_overwrite_completefunc = 1 " overwrite clang_complete
-let g:neocomlcache_lock_buffer_name_pattern='\*ku\*'
-if !exists('g:neocomplcache_keyword_patterns')
-    let g:neocomplcache_keyword_patterns = {}
-endif
-let g:neocomplcache_keyword_patterns['default'] = '\h\w*'
-if !exists('g:neocomplcache_force_omni_patterns')
-    let g:neocomplcache_force_omni_patterns = {}
-endif
-let g:neocomplcache_force_omni_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
-let g:neocomplcache_force_omni_patterns.c = '[^.[:digit:] *\t]\%(\.\|->\)'
-let g:neocomplcache_force_omni_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
-let g:neocomplcache_force_omni_patterns.objc = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
-let g:neocomplcache_force_omni_patterns.objcpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
 
 autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
 autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
@@ -282,37 +250,6 @@ autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
 autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 autocmd FileType vim setlocal omnifunc=syntaxcomplete#Complete
 autocmd FileType python SyntasticToggleMode
-
-""""""" enhanced usage for Shougo/vimshell
-function! VimShellBorn()
-    set noautochdir
-    VimShellCurrentDir
-    set autochdir
-endfunction
-
-function! TabVimShell()
-    tabnew
-    call VimShellBorn()
-endfunction
-
-function! VspVimShell()
-    "Vsplit and VimShell
-    vsplit
-    call VimShellBorn()
-endfunction
-command! -nargs=0 Tsh call TabVimShell()
-command! -nargs=0 Vsh call VspVimShell()
-
-"""""""" input date into editing-buffer
-function! DateDate()
-  read !date --rfc-3339=date
-endfunction
-
-function! DateSecs()
-  read !date --rfc-3339=seconds
-endfunction
-command! -nargs=0 Ddate call DateDate()
-command! -nargs=0 Dsecs call DateSecs()
 
 augroup hotkey_compile
     autocmd FileType c map <F5>
