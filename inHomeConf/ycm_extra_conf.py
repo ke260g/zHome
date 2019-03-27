@@ -43,7 +43,7 @@ SOURCE_EXTENSIONS = [ '.cpp', '.cxx', '.cc', '.c', '.m', '.mm' ]
 # CHANGE THIS LIST OF FLAGS. YES, THIS IS THE DROID YOU HAVE BEEN LOOKING FOR.
 flags = [
 #'-Wall',
-'-Wunused=0',
+#'-Wunused=0',
 '-Wextra',
 #'-Werror',
 '-Wno-long-long',
@@ -86,10 +86,9 @@ get_python_inc(),
 'cpp/ycm/tests/gmock/include',
 '-isystem',
 'cpp/ycm/benchmarks/benchmark/include',
-'-I',
-'/usr/include/c++/6',
-'-I',
-'/usr/include/x86_64-linux-gnu/c++/6'
+'-I/usr/include/c++/6',
+'-I/usr/include/x86_64-linux-gnu/c++/6',
+'-I/usr/include',
 ]
 
 # Clang automatically sets the '-std=' flag to 'c++14' for MSVC 2015 or later,
