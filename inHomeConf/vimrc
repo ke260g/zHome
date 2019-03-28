@@ -1,4 +1,5 @@
 scriptencoding utf-8 " must be at the start of this file
+set langmenu=en
 set viminfo='20,\"500   " Keep a .viminfo file.
 
 set encoding=utf-8
@@ -82,7 +83,7 @@ nmap fp :lprevious<CR>
 """""""""""""""""""""""""""""""""""""
 
 "vundle, a plugin manager
-set rtp+=$HOME/.vim/bundle/Vundle.vim
+set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 Plugin 'jrosiek/vim-mark'     "new generation's marks
 "Plugin 'sjl/gundo.vim'       "undo tree
@@ -216,7 +217,7 @@ let g:ncm2_pyclang#args_file_path=['.clang_complete']
 "-----------------------------------------------
 "solution3: YCM only [ not work with supertab/ncm2 ]
 let g:ycm_confirm_extra_conf=0
-let g:ycm_global_ycm_extra_conf='$HOME/.ycm_extra_conf.py'
+let g:ycm_global_ycm_extra_conf='~/.ycm_extra_conf.py'
 let g:ycm_seed_identifiers_with_syntax=1
 let g:ycm_min_num_of_chars_for_completion=2     "min chars
 let g:ycm_collect_identifiers_from_tags_files=1 "languages identifiers
