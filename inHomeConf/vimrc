@@ -94,6 +94,7 @@ Plugin 'majutsushi/tagbar'    "new generation of taglist
 Plugin 'EasyMotion'  "a revolutional moving cursor plugin
 Plugin 'matchit.zip' "easy jump in the xml , html
 Plugin 'rking/ag.vim' "code searcher, silver_searcher_ag
+Plugin 'vim-scripts/gtags.vim'
 "auto complete
 Plugin 'ervandew/supertab' "powerful autocomplete <Tab>
 Plugin 'drmingdrmer/xptemplate'   "c-autocomplete
