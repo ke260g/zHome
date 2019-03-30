@@ -1,25 +1,19 @@
 scriptencoding utf-8 " must be at the start of this file
 set langmenu=en
 set viminfo='20,\"500   " Keep a .viminfo file.
-
 set encoding=utf-8
 set termencoding=utf-8
 set fileencodings=utf-8,gbk,latin1
-
-" enhanced tab completion. These can be done in the user vimrc file.
-" set suffixes+=.info,.aux,.log,.dvi,.bbl,.out,.o,.lo
-
-set number " line number
+"set suffixes+=.info,.aux,.log,.dvi,.bbl,.out,.o,.lo
+set number
 set foldmethod=syntax
-" set smartindent
-" set autoindent
-
-" tab and space stuff
-set expandtab " change tab to space
+"set smartindent
+"set autoindent
+"tab and space stuff
+set expandtab "change tab to space
 set shiftwidth=4
 set softtabstop=4
 set tabstop=4 " set ts=4
-
 set ruler
 set wildmenu
 set nocompatible
@@ -27,7 +21,7 @@ set cursorcolumn
 set cursorline
 set ignorecase
 set showcmd
-set autochdir " conflict with vim-shell
+set autochdir "conflict with vim-shell
 set smartcase
 set incsearch
 set hlsearch
@@ -40,16 +34,7 @@ syntax on
 colorscheme molokai "desert
 filetype indent on
 filetype plugin on
-
-"# strange filetype foldmethod set to `indent' instead of syntax
-"autocmd FileType html,xhtml,xml,javascript setlocal foldmethod=indent
-"autocmd FileType verilog setlocal foldmethod=indent
-"autocmd FileType python setlocal foldmethod=indent
-
-"# detect glsl (opengl shader language)
-"autocmd! BufNewFile,BufRead *.glsl,*.vs,*.fs set ft=glsl
-
-""""""" custom hotkey
+"custom hotkey------------------------
 "switch window
 nnoremap mh <C-W>h
 nnoremap mj <C-W>j
@@ -63,9 +48,14 @@ nnoremap mmj <C-W>4+
 "tab-pages operate
 nmap tt :tabnew
 nmap tn :tabnext<CR>
-nmap gl :tabnext<CR>
+nmap tl :tabnext<CR>
 nmap tp :tabpre<CR>
-nmap gh :tabpre<CR>
+nmap th :tabpre<CR>
+"quit
+nmap qq :q!
+nmap qw :wq
+nmap fn :lnext<CR>
+nmap fp :lprevious<CR>
 " about plugin
 map <F2> :NERDTreeToggle<CR>
 map <F3> :TagbarToggle<CR>
@@ -73,15 +63,7 @@ map <F4> :SyntasticToggleMode<CR>
 "map <F4> :GundoToggle<CR>
 "map <F7> :RainbowParenthesesToggleAll<CR> "conflict with folder
 "map <F8> :Tsh<CR>
-
-" quit
-nmap qq :q!
-nmap qw :wq
-"syntax check jump
-nmap fn :lnext<CR>
-nmap fp :lprevious<CR>
-"""""""""""""""""""""""""""""""""""""
-
+"------------------------------------
 "vundle, a plugin manager
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
@@ -100,21 +82,24 @@ Plugin 'vim-scripts/gtags.vim'
 Plugin 'ervandew/supertab' "powerful autocomplete <Tab>
 Plugin 'drmingdrmer/xptemplate'   "c-autocomplete
 Plugin 'The-NERD-Commenter'       "commenter
-"auto complete advanced
-"Plugin 'ncm2/ncm2'                "neocomplete > neocomplecache > deoplete > ncm > ncm2
+"auto complete advanced------------------------------------
+"neocomplete > neocomplecache > deoplete > ncm > ncm2
+"Plugin 'ncm2/ncm2'
 "Plugin 'roxma/nvim-yarp'          "deps for ncm2
 "Plugin 'roxma/vim-hug-neovim-rpc' "deps for ncm2
-"Plugin 'ncm2/ncm2-path'           "path complete for abs/cwd/buffer-path
-"Plugin 'ncm2/ncm2-bufword'        "word complete on current buffer
+"Plugin 'ncm2/ncm2-path'           "paths complete for abs/cwd/
+"Plugin 'ncm2/ncm2-bufword'        "words on current buffer
 "Plugin 'ncm2/ncm2-pyclang'        "powerful complete
-"Plugin 'justmao945/vim-clang'     "clang_complete with async, quick
-Plugin 'Valloric/YouCompleteMe'    "conflict with clang_complete/vim-clang/supertab/ncm2
+"Plugin 'justmao945/vim-clang'     "clang_complete with async
+"conflict with clang_complete/vim-clang/ncm2
+Plugin 'Valloric/YouCompleteMe'
+"---------------------------------------------------------
 "vision
 Plugin 'bling/vim-airline'
 Plugin 'Yggdroot/indentLine'    "show vertical indent line
 Plugin 'ShowTrailingWhitespace' "view trailing blank-space
 "file browser
-Plugin 'kien/ctrlp.vim'         "ctrl-p, excellent file searcher
+Plugin 'kien/ctrlp.vim'         "ctrl-p, file searcher
 Plugin 'scrooloose/nerdtree'    "tree file browser
 "syntax
 "Plugin 'vim-scripts/DrawIt'             "syntax for asciio
@@ -124,69 +109,63 @@ Plugin 'scrooloose/nerdtree'    "tree file browser
 "Plugin 'fatih/vim-go'                   "go, syntax
 "Plugin 'peterhoeg/vim-qml'              "qml, syntax
 "Plugin 'vhda/verilog_systemverilog.vim' "verilog
-"Plugin 'mattn/emmet-vim'                "html css plugin, many function
+"Plugin 'mattn/emmet-vim'                "html css plugin,
 "Plugin 'pangloss/vim-javascript'        "modern javascript syntax
 "Plugin 'thisivan/vim-matchit'           "html css
 "Plugin 'othree/xml.vim'                 "auto edit tags for xml
 "Plugin 'othree/html5.vim'               "html5 powerful plugin
+"Plugin 'chrisbra/csv.vim'               "csv plugin
 call vundle#end()
-
-let g:NERDTreeShowBookMarks=1 " NERDTree
-
-" indent
-let g:indentLine_color_term = 900
-let g:indentLine_color_dark = 1
-
-let mapleader=";" "for mark, a powerful mark plugin
-let g:ag_working_path_mode="r" "ag.vim, to search from project root instead of the cwd
-
+"NERDTree
+let g:NERDTreeShowBookMarks=1
+"indentLine vertical
+let g:indentLine_color_term=900
+let g:indentLine_color_dark=1
+"for mark, a powerful mark plugin
+let mapleader=";"
+"ag.vim, to search from project root instead of the cwd
+let g:ag_working_path_mode="r"
 " xml.vim, a powerful xml plugin
 let g:xml_syntax_folding=1
 let g:xml_namespace_transparent=1
-
-let g:tabular_loaded=1 "tabular, a auto align plugin
-
+"tabular, a auto align plugin
+let g:tabular_loaded=1
 " statusline
 let g:Powerline_loaded=0
 let g:airline#extensions#quickfix_text='Quickfix'
 let g:airline#extensions#tabline#enabled=1
+let g:airline#extensions#tabline#tab_nr_type=1
 let g:airline#extensions#branch#empty_message=''
 let g:airline#extensions#branch#enablded=1
 let g:airline#extensions#syntastic#enabled=1
 let g:airline#extensions#tagbar#enabled=1
 let g:airline#extensions#csv#enabled=1
+let g:airline#extensions#csv#column_display='Name'
 let g:airline#extensions#hunks#enabled=1
 let g:airline#extensions#whitespace#enabled=0
 let g:airline#extensions#whitespace#symbol='!'
-
 "vim-signify
 let g:signify_line_highligth=1
 let g:signify_vcs_list=['git', 'hg', 'svn', 'cvs']
-
 " matchit, easy jump in html xml
 let loaded_matchit=1
-
 " emmet html plugin
 let g:user_emmet_leader_key='..'
 let g:user_emmet_install_global=1
-
-" othree/html5 html5 syntax and omnifunc
+"othree/html5 html5 syntax and omnifunc
 let g:html5_event_handler_attributes_complete = 0
 let g:html5_rdfa_attributes_complete = 0
 let g:html5_microdata_attributes_complete = 0
 let g:html5_aria_attributes_complete = 0
-
 " pnagloss/vim-javascript
 let g:javascript_plugin_jsdoc = 1
 let g:javascript_plugin_ngdoc = 1
 let g:javascript_plugin_flow = 1
-
-" html indent
+"html indent
 let g:html_indent_script1="auto"
 let g:html_indent_style1="auto"
 let g:html_indent_inctags = "html,body,head,tbody"
-
-" xptemplate
+"xptemplate
 let g:xptemplate_brace_complete='}'
 let g:xptemplate_break_undo=1
 let g:xptemplate_key=',,'
@@ -194,27 +173,23 @@ let g:xptemplate_key=',,'
 let g:xptemplate_nav_next='`'
 let g:xptemplate_nav_cancel='<C-c>'
 highlight XPTcurrentPH gui=none guibg=blue
-
-" SuperTab
-" let g:SuperTabDefaultCompletionType="context" "the default option
+"SuperTab
+"let g:SuperTabDefaultCompletionType="context" "the default option
 let g:SuperTabClosePreviewOnPopupClose=1
 let g:SuperTabLongestHighlight=1
 "let g:SuperTabDefaultCompletionType='<C-X><C-U>' " completefunc
 let g:SuperTabDefaultCompletionType='<C-X><C-O>' " omnifunc
-
 "auto complete ---------------------------------
 set completeopt=noinsert,menuone,noselect
 "solution1: vim-clang, very quick(caches function type)
-let g:clang_c_options='-std=c99'
-let g:clang_cpp_options='-std=c++11 -I/usr/include/c++/6 -I/usr/include/x86_64-linux-gnu/c++/6'
-let g:clang_dotfile='.clang_complete'
-"-----------------------------------------------
+"let g:clang_c_options='-std=c99'
+"let g:clang_cpp_options='-std=c++11 -I/usr/include/c++/6 -I/usr/include/x86_64-linux-gnu/c++/6'
+"let g:clang_dotfile='.clang_complete'
 "solution2: ncm2-pyclang
-let g:ncm2_pyclang#library_path='/usr/lib/llvm-4.0/lib/libclang.so'
-let g:ncm2_pyclang#args_file_path=['.clang_complete']
+"let g:ncm2_pyclang#library_path='/usr/lib/llvm-4.0/lib/libclang.so'
+"let g:ncm2_pyclang#args_file_path=['.clang_complete']
 "autocmd BufEnter * call ncm2#enable_for_buffer()
 "set shortmess+=c
-"-----------------------------------------------
 "solution3: YCM only [ not work with supertab/ncm2 ]
 let g:ycm_confirm_extra_conf=0
 let g:ycm_global_ycm_extra_conf='~/.ycm_extra_conf.py'
@@ -230,9 +205,8 @@ map gd :YcmCompleter GoToDefinitionElseDeclaration<CR>
 "nnoremap gk :YcmCompleter GoToDeclaration<CR>
 "nnoremap gj :YcmCompleter GoToDefinition<CR>
 "-----------------------------------------------
-
-" syntasitc, a syntax checker
-" set statusline+=%#warningmsg#
+"syntasitc, a syntax checker
+"set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 let g:syntastic_always_populate_loc_list = 1
@@ -243,16 +217,20 @@ let g:syntastic_c_config_file=".clang" "co-operate with clang_complete
 let g:syntastic_c_compiler_options="-fPIC"
 let g:syntastic_cpp_config_file=".clang"
 let g:syntastic_cpp_compiler_options="-fPIC -fpermissive -std=c++11 -std=c++14"
-
+"python
 let g:jedi#force_py_version=3
+"csv filetype
+augroup filetypedetect
+  au! BufRead,BufNewFile *.csv,*.dat setfiletype csv
+augroup END
+"detect glsl (opengl shader language)
+autocmd! BufNewFile,BufRead *.glsl,*.vs,*.fs set ft=glsl
+"# strange filetype foldmethod set to `indent' instead of syntax
+"autocmd FileType html,xhtml,xml,javascript setlocal foldmethod=indent
+"autocmd FileType verilog setlocal foldmethod=indent
+"autocmd FileType python setlocal foldmethod=indent
 
-autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
-autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
-autocmd FileType vim setlocal omnifunc=syntaxcomplete#Complete
-autocmd FileType python SyntasticToggleMode
-
+"F5 for compile
 augroup hotkey_compile
     autocmd FileType c map <F5>
                 \ <ESc>
