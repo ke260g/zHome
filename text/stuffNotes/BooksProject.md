@@ -11,6 +11,7 @@
 * *OS*      Operating Systems Internals and Design Principles E7
 * Linker and Loader
 * c trap and pitfalls
+* CSAPP     Computer Science A Programmer Perspective
 
 ##### Network:
 * *UNP*     Unix Network Programming E3 (2009)
