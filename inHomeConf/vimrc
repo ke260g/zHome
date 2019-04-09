@@ -58,7 +58,7 @@ nmap qq :q!
 nmap qw :wq
 nmap fn :lnext<CR>
 nmap fp :lprevious<CR>
-" about plugin
+"about plugin
 map <F2> :NERDTreeToggle<CR>
 map <F3> :TagbarToggle<CR>
 "map <F4> :SyntasticToggleMode<CR>
@@ -67,43 +67,36 @@ map <F4> :YcmDiags<CR>
 "map <F7> :RainbowParenthesesToggleAll<CR> "conflict with folder
 "map <F8> :Tsh<CR>
 "------------------------------------
-"vundle, a plugin manager
+"call plug#begin('~/.vim/plugged')
+"call plug#end
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
-Plugin 'jrosiek/vim-mark'     "new generation's marks
-"Plugin 'sjl/gundo.vim'       "undo tree
-Plugin 'scrooloose/syntastic' "syntax checker
-"Plugin 'tpope/vim-surround'  "powerful edit tags for xsl
-Plugin 'godlygeek/tabular'    "auto align
-Plugin 'mhinz/vim-signify'    "show git/svn status on column
-Plugin 'majutsushi/tagbar'    "new generation of taglist
-Plugin 'EasyMotion'  "a revolutional moving cursor plugin
-Plugin 'matchit.zip' "easy jump in the xml , html
-Plugin 'rking/ag.vim' "code searcher, silver_searcher_ag
+Plugin 'gmarik/Vundle.vim'
+Plugin 'jrosiek/vim-mark'           "new generation's marks
+Plugin 'godlygeek/tabular'          "auto align
+Plugin 'mhinz/vim-signify'          "show git/svn status on column
+Plugin 'majutsushi/tagbar'          "new generation of taglist
+Plugin 'easymotion/vim-easymotion'  "a revolutional moving cursor plugin
+Plugin 'vim-scripts/matchit.zip'    "easy jump in the xml , html
+Plugin 'rking/ag.vim'               "code searcher, silver_searcher_ag
+Plugin 'drmingdrmer/xptemplate'     "c-autocomplete
+Plugin 'scrooloose/nerdcommenter'   "commenter
 Plugin 'vim-scripts/gtags.vim'
 Plugin 'hari-rangarajan/CCTree'
-"auto complete
-"Plugin 'ervandew/supertab' "powerful autocomplete <Tab>
-Plugin 'drmingdrmer/xptemplate'   "c-autocomplete
-Plugin 'The-NERD-Commenter'       "commenter
+"Plugin 'sjl/gundo.vim'       "undo tree
+"Plugin 'scrooloose/syntastic'"syntax checker
+"Plugin 'tpope/vim-surround'  "powerful edit tags for xsl
+"vision----------------------------------------------------
+Plugin 'bling/vim-airline'
+Plugin 'Yggdroot/indentLine'        "show vertical indent line
+Plugin 'vim-scripts/ShowTrailingWhitespace' "view trailing blank-space
+Plugin 'kien/ctrlp.vim'             "ctrl-p, file searcher
+Plugin 'scrooloose/nerdtree'        "tree file browser
+"----------------------------------------------------------
 "auto complete advanced------------------------------------
 "neocomplete > neocomplecache > deoplete > ncm > ncm2
-"Plugin 'ncm2/ncm2'
-"Plugin 'roxma/nvim-yarp'          "deps for ncm2
-"Plugin 'roxma/vim-hug-neovim-rpc' "deps for ncm2
-"Plugin 'ncm2/ncm2-path'           "paths complete for abs/cwd/
-"Plugin 'ncm2/ncm2-bufword'        "words on current buffer
-"Plugin 'ncm2/ncm2-pyclang'        "powerful complete
-"conflict with clang_complete/vim-clang/ncm2
-Plugin 'Valloric/YouCompleteMe'
+Plugin 'Valloric/YouCompleteMe'    "conflict with ncm2
 "---------------------------------------------------------
-"vision
-Plugin 'bling/vim-airline'
-Plugin 'Yggdroot/indentLine'    "show vertical indent line
-Plugin 'ShowTrailingWhitespace' "view trailing blank-space
-"file browser
-Plugin 'kien/ctrlp.vim'         "ctrl-p, file searcher
-Plugin 'scrooloose/nerdtree'    "tree file browser
 "syntax
 "Plugin 'vim-scripts/DrawIt'             "syntax for asciio
 "Plugin 'tikhomirov/vim-glsl'            "syntax for glsl
@@ -118,6 +111,7 @@ Plugin 'scrooloose/nerdtree'    "tree file browser
 "Plugin 'othree/xml.vim'                 "auto edit tags for xml
 "Plugin 'othree/html5.vim'               "html5 powerful plugin
 "Plugin 'chrisbra/csv.vim'               "csv plugin
+"---------------------------------------------------------
 call vundle#end()
 "NERDTree
 let g:NERDTreeShowBookMarks=1
@@ -177,20 +171,11 @@ let g:xptemplate_nav_next='`'
 let g:xptemplate_nav_cancel='<C-c>'
 highlight XPTcurrentPH gui=none guibg=blue
 "SuperTab
-"let g:SuperTabDefaultCompletionType="context" "the default option
 let g:SuperTabClosePreviewOnPopupClose=1
 let g:SuperTabLongestHighlight=1
 "let g:SuperTabDefaultCompletionType='<C-X><C-U>' " completefunc
 let g:SuperTabDefaultCompletionType='<C-X><C-O>' " omnifunc
 "auto complete ---------------------------------
-"solution2: ncm2-pyclang
-"let g:python3_host_prog='E:\app-devel\Python37\python.exe'
-"let g:ncm2_pyclang#library_path='E:\app-devel\LLVM\bin\libclang.dll'
-"let g:ncm2_pyclang#args_file_path=['~/.clang_complete', '.clang_complete']
-"autocmd FileType c,cpp nnoremap <buffer> gd :<c-u>call ncm2_pyclang#goto_declaration()<cr>
-"autocmd BufEnter * call ncm2#enable_for_buffer()
-set shortmess+=c
-"solution3: YCM only [ not work with supertab/ncm2 ]
 let g:ycm_confirm_extra_conf=1
 let g:ycm_global_ycm_extra_conf='~/.ycm_extra_conf.py'
 let g:ycm_seed_identifiers_with_syntax=1
