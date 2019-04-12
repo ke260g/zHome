@@ -67,8 +67,6 @@ map <F4> :YcmDiags<CR>
 "map <F7> :RainbowParenthesesToggleAll<CR> "conflict with folder
 "map <F8> :Tsh<CR>
 "------------------------------------
-"call plug#begin('~/.vim/plugged')
-"call plug#end
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
@@ -84,7 +82,6 @@ Plugin 'scrooloose/nerdcommenter'   "commenter
 Plugin 'vim-scripts/gtags.vim'
 Plugin 'hari-rangarajan/CCTree'
 "Plugin 'sjl/gundo.vim'       "undo tree
-"Plugin 'scrooloose/syntastic'"syntax checker
 "Plugin 'tpope/vim-surround'  "powerful edit tags for xsl
 "vision----------------------------------------------------
 Plugin 'bling/vim-airline'
@@ -170,38 +167,27 @@ let g:xptemplate_key=',,'
 let g:xptemplate_nav_next='`'
 let g:xptemplate_nav_cancel='<C-c>'
 highlight XPTcurrentPH gui=none guibg=blue
-"SuperTab
-let g:SuperTabClosePreviewOnPopupClose=1
-let g:SuperTabLongestHighlight=1
-"let g:SuperTabDefaultCompletionType='<C-X><C-U>' " completefunc
-let g:SuperTabDefaultCompletionType='<C-X><C-O>' " omnifunc
+
 "auto complete ---------------------------------
 let g:ycm_confirm_extra_conf=1
 let g:ycm_global_ycm_extra_conf='~/.ycm_extra_conf.py'
+let g:ycm_add_preview_to_completeopt=0
+let g:ycm_show_diagnostics_ui=0
 let g:ycm_seed_identifiers_with_syntax=1
-let g:ycm_min_num_of_chars_for_completion=2     "min chars
-let g:ycm_collect_identifiers_from_tags_files=1 "languages identifiers
+let g:ycm_min_num_of_chars_for_completion=2
+let g:ycm_collect_identifiers_from_comments_and_strings=1
 let g:ycm_complete_in_comments=1
 let g:ycm_complete_in_strings=1
-let g:ycm_collect_identifiers_from_comments_and_strings=1
 let g:ycm_goto_buffer_command='new-or-existing-tab'
 let g:ycm_key_invoke_completion='C-n'
+set completeopt=menu,menuone
+let g:ycm_semantic_triggers =  {
+            \ 'c,cpp,python,java,go,erlang,perl,cs,lua,javascript': ['re!\w{2}'],
+            \ }
 map gd :YcmCompleter GoToDefinitionElseDeclaration<CR>
 "nnoremap gk :YcmCompleter GoToDeclaration<CR>
 "nnoremap gj :YcmCompleter GoToDefinition<CR>
 "-----------------------------------------------
-"syntasitc, a syntax checker
-"set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-let g:syntastic_c_config_file=".clang_complete" "co-operate with clang_complete
-let g:syntastic_c_compiler_options="-fPIC -std=gnu99"
-let g:syntastic_cpp_config_file=".clang_complete"
-let g:syntastic_cpp_compiler_options="-fPIC -fpermissive -std=c++11 -std=c++14"
 "python
 let g:jedi#force_py_version=3
 "csv filetype
