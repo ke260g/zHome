@@ -193,10 +193,7 @@ source $ZSH/oh-my-zsh.sh
 export LANGUAGE=en_US.UTF-8
 export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
-<<<<<<< HEAD
-=======
 
->>>>>>> 14ce3f5eb33fc65b648da5d28ef207d44a97f070
 # Preferred editor for local and remote sessions
 # if [[ -n $SSH_CONNECTION ]]; then
 #   export EDITOR='vim'
