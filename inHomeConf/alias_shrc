@@ -39,7 +39,7 @@ alias i386ld="ld -g -melf_i386 -o"
 alias i386c="gcc -pipe -Wall -m32 -Wshadow -std=gnu99 -O2 -ggdb -o"
 
 alias make_arm="make ARCH=arm CROSS_COMPILE=arm-linux-"
-alias rm_elf="rm `file *|grep ELF|awk '{print $1}'|sed s/://`"
+alias rm_elf="find . -type f -exec file {} + | grep ELF | awk '{print \$1}' | sed 's/://' | xargs rm"
 
 # C_OPTS means complier options
 CUSTOM_CFLAGS="-pipe -Wall -Wshadow -O2 -g"
