@@ -92,7 +92,7 @@ Plugin 'scrooloose/nerdtree'        "tree file browser
 "----------------------------------------------------------
 "auto complete advanced------------------------------------
 "neocomplete > neocomplecache > deoplete > ncm > ncm2
-Plugin 'Valloric/YouCompleteMe'    "conflict with ncm2
+"Plugin 'Valloric/YouCompleteMe'    "conflict with ncm2
 "---------------------------------------------------------
 "syntax
 "Plugin 'vim-scripts/DrawIt'             "syntax for asciio
@@ -115,6 +115,7 @@ let g:NERDTreeShowBookMarks=1
 "indentLine vertical
 let g:indentLine_color_term=900
 let g:indentLine_color_dark=1
+let g:indentLine_setConceal=0 " avoid hide double qoute for json
 "for mark, a powerful mark plugin
 let mapleader=";"
 "ag.vim, to search from project root instead of the cwd
@@ -167,6 +168,8 @@ let g:xptemplate_key=',,'
 let g:xptemplate_nav_next='`'
 let g:xptemplate_nav_cancel='<C-c>'
 highlight XPTcurrentPH gui=none guibg=blue
+
+let g:molokai_original=1
 
 "auto complete ---------------------------------
 let g:ycm_confirm_extra_conf=1
