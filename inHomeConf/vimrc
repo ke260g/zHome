@@ -70,16 +70,17 @@ map <F4> :YcmDiags<CR>
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
-Plugin 'jrosiek/vim-mark'           "new generation's marks
-Plugin 'godlygeek/tabular'          "auto align
-Plugin 'mhinz/vim-signify'          "show git/svn status on column
-Plugin 'majutsushi/tagbar'          "new generation of taglist
-Plugin 'easymotion/vim-easymotion'  "a revolutional moving cursor plugin
-Plugin 'vim-scripts/matchit.zip'    "easy jump in the xml , html
-Plugin 'rking/ag.vim'               "code searcher, silver_searcher_ag
-Plugin 'drmingdrmer/xptemplate'     "c-autocomplete
-Plugin 'scrooloose/nerdcommenter'   "commenter
-Plugin 'vim-scripts/gtags.vim'
+Plugin 'jrosiek/vim-mark'             "new generation's marks
+Plugin 'godlygeek/tabular'            "auto align
+Plugin 'mhinz/vim-signify'            "show git/svn status on column
+Plugin 'majutsushi/tagbar'            "new generation of taglist
+Plugin 'easymotion/vim-easymotion'    "a revolutional moving cursor plugin
+Plugin 'vim-scripts/matchit.zip'      "easy jump in the xml , html
+Plugin 'rking/ag.vim'                 "code searcher, silver_searcher_ag
+Plugin 'drmingdrmer/xptemplate'       "c-autocomplete
+Plugin 'scrooloose/nerdcommenter'     "commenter
+Plugin 'vim-scripts/gtags.vim'        "tags system
+Plugin 'ludovicchabant/vim-gutentags' "gtags management
 Plugin 'hari-rangarajan/CCTree'
 "Plugin 'sjl/gundo.vim'       "undo tree
 "Plugin 'tpope/vim-surround'  "powerful edit tags for xsl
@@ -92,7 +93,7 @@ Plugin 'scrooloose/nerdtree'        "tree file browser
 "----------------------------------------------------------
 "auto complete advanced------------------------------------
 "neocomplete > neocomplecache > deoplete > ncm > ncm2
-Plugin 'Valloric/YouCompleteMe'    "conflict with ncm2
+"Plugin 'Valloric/YouCompleteMe'    "conflict with ncm2
 "---------------------------------------------------------
 "syntax
 "Plugin 'vim-scripts/DrawIt'             "syntax for asciio
@@ -168,6 +169,19 @@ let g:xptemplate_nav_next='`'
 let g:xptemplate_nav_cancel='<C-c>'
 highlight XPTcurrentPH gui=none guibg=blue
 
+"gutentags
+let g:gutentags_project_root = [ 'vim_project' ]
+let g:gutentags_modules = [ ]
+if executable('gtags-cscope') && executable('gtags')
+    let g:gutentags_modules += ['gtags_cscope']
+endif
+let g:gutentags_cache_dir = expand('~/.cache/gtags_cache') " global caches
+let g:gutentags_auto_add_gtags_cscope = 1 " enable auto add
+"-----------------------------------------------
+
+let g:ctrlp_root_markers = [ 'vim_project' ]
+let g:ctrlp_regexp = 1 "<c-r> for switch
+
 "auto complete ---------------------------------
 let g:ycm_confirm_extra_conf=1
 let g:ycm_global_ycm_extra_conf='~/.ycm_extra_conf.py'
@@ -191,7 +205,7 @@ map gd :YcmCompleter GoToDefinitionElseDeclaration<CR>
 let g:jedi#force_py_version=3
 "csv filetype
 augroup filetypedetect
-  au! BufRead,BufNewFile *.csv,*.dat setfiletype csv
+    au! BufRead,BufNewFile *.csv,*.dat setfiletype csv
 augroup END
 "detect glsl (opengl shader language)
 autocmd! BufNewFile,BufRead *.glsl,*.vs,*.fs set ft=glsl
