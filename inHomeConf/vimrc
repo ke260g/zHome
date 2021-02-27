@@ -116,6 +116,7 @@ let g:NERDTreeShowBookMarks=1
 "indentLine vertical
 let g:indentLine_color_term=900
 let g:indentLine_color_dark=1
+let g:indentLine_setConceal=0 " avoid hide double qoute for json
 "for mark, a powerful mark plugin
 let mapleader=";"
 "ag.vim, to search from project root instead of the cwd
@@ -181,6 +182,7 @@ let g:gutentags_auto_add_gtags_cscope = 1 " enable auto add
 
 let g:ctrlp_root_markers = [ 'vim_project' ]
 let g:ctrlp_regexp = 1 "<c-r> for switch
+let g:molokai_original=1
 
 "auto complete ---------------------------------
 let g:ycm_confirm_extra_conf=1
